@@ -31,9 +31,14 @@ class Solution(object):
         else:
             flag = 1
         x *= flag  # find absolute value of x
+        
+        if x%10 = 0:   # If the last digit of x is 0, then we need to remove this 0 and then do the flip operation to the string x
+           x = x/10
+           
         x = str(x) # make x into a string
         x = x[::-1] # reverse the string
         x = int(x) # make string back to integer
+        
         if x > 2147483647: # check if the string overflow
             return 0
         else:
