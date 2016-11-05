@@ -25,3 +25,13 @@ class Solution(object):
         n = len(nums)
         k = k % n
         nums[:] = nums[(n-k):]+nums[:(n-k)]
+
+'''
+There is another way using loop, just one line
+'''
+for i in range(k): nums.insert(0, nums.pop())   
+
+'''
+nums.pop() returns AND remove the last entry of the list nums, then it insert this entry to the 1st position of the nums list and then
+do it for k times
+'''
