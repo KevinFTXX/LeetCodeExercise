@@ -30,12 +30,39 @@ class Solution(object):
             flag = -1
         else:
             flag = 1
-        x *= flag
-        x = str(x)
-        x = x[::-1]
-        x = int(x)
-        if x > 2147483647:
+        x *= flag  # find absolute value of x
+        x = str(x) # make x into a string
+        x = x[::-1] # reverse the string
+        x = int(x) # make string back to integer
+        if x > 2147483647: # check if the string overflow
             return 0
         else:
             return flag*x
+            
+'''
+The above code is kind of cheating, since it change an integer to a string and just reverse the string. The following one is more mathematical
+'''
+
+
+class Solution(object):
+    def reverse(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        # Consider positive and negative situation
+        flag = 0
+        if x < 0:
+            flag = -1
+        else:
+            flag = 1
+        x *= flag
+        result = 0
+        while x:
+            result = result * 10 + x % 10  # x module 10 will get the last digit of x
+            x = x // 10  # then shrink x by 10, use floor division
+        if result > 2147483647:
+            return 0
+        else:
+            return result * flag
         
