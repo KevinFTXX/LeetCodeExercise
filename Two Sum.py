@@ -6,6 +6,11 @@ Input: numbers={2, 7, 11, 15}, target=9
 Output: index1=0, index2=1
 '''
 
+'''
+Idea: loop over the list nums, start with an empty dictionary D, if (target - value) is NOT in D, then update the D by {value: index}, 
+if yes, then it must be that we find the answer so return([index2, index1])
+'''
+
 class Solution(object):
     def twoSum(self, nums, target):
         """
@@ -20,6 +25,4 @@ class Solution(object):
                 hash_map.update({value:index1})
             else:
                 index2 = hash_map[complement]   # if it is true, then get the index of "target-value"
-                if index1 != index2:                # check whether these 2 indexs are different, e.g., target = 10, value = 5, index1 = 1, in this case index2 = 1 too, so index1 can equal to index2
-                    
-                    return [min(index2, index1),max(index1,index2)]
+                return [index2,index1]
